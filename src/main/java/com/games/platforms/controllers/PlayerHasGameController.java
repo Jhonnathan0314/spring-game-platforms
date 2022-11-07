@@ -87,6 +87,9 @@ public class PlayerHasGameController {
 	public boolean deleteById(@PathVariable int id){
 		PlayerHasGame playerHasGame = playerHasGameRepository.findById(id).orElse(null);
 		if(playerHasGame != null) {
+			Player player = playerHasGame.getPlayer();
+			player.setTotalScore(player.getTotalScore() - playerHasGame.getScore());
+			playerRepository.save(player);
 			playerHasGameRepository.deleteById(id);
 			return true;
 		}

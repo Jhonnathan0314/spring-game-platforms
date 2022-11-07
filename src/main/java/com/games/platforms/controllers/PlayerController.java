@@ -53,11 +53,10 @@ public class PlayerController {
 	}
 	
 	@PutMapping("{id}")
-	public Player create(@PathVariable int id, @RequestBody Player newPlayer) {
+	public Player update(@PathVariable int id, @RequestBody Player newPlayer) {
 		Player player = playerRepository.findById(id).orElse(null);
 		if(player != null && newPlayer != null) {
 			player.setUsername(newPlayer.getUsername());
-			player.setTotalScore(newPlayer.getTotalScore());
 			playerRepository.save(player);
 		}
 		return null;

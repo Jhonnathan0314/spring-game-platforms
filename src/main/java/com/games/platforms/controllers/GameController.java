@@ -53,7 +53,7 @@ public class GameController {
 	}
 
 	@PutMapping("{id}")
-	public Game create(@PathVariable int id, @RequestBody Game newGame) {
+	public Game update(@PathVariable int id, @RequestBody Game newGame) {
 		Game game = gameRepository.findById(id).orElse(null);
 		if(game != null && newGame != null) {
 			game.setName(newGame.getName());
