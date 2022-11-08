@@ -18,7 +18,6 @@ import javax.persistence.Table;
 public class Sesion {
 	//Declaracion de variables
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_sesion;
 	private String coordinator;
 	
