@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.games.platforms.models.Player;
 import com.games.platforms.models.Sesion;
-import com.games.platforms.repositories.PlayerRepository;
 import com.games.platforms.repositories.SesionRepository;
 
 /**
@@ -28,54 +26,48 @@ import com.games.platforms.repositories.SesionRepository;
  *
  */
 @RestController
-@RequestMapping("player")
+@RequestMapping("sesion")
 @CrossOrigin("*")
-public class PlayerController {
+public class SesionController {
 	//Declaracion de variables
-	@Autowired
-	private PlayerRepository playerRepository;
 	@Autowired
 	private SesionRepository sesionRepository;
 	
 	@GetMapping("")
-	public List<Player> findAll(){
-		return playerRepository.findAll();
+	public List<Sesion> findAll(){
+		return sesionRepository.findAll();
 	}
-	
+
 	@GetMapping("{id}")
-	public Player findById(@PathVariable int id){
-		return playerRepository.findById(id).orElse(null);
+	public Sesion findById(@PathVariable int id){
+		return sesionRepository.findById(id).orElse(null);
 	}
-	
+
 	@ResponseStatus(code = HttpStatus.CREATED)
-	@PostMapping("sesion/{idSesion}")
-	public Player create(@RequestBody Player player, @PathVariable int idSesion) {
-		Sesion sesion = sesionRepository.findById(idSesion).orElse(null);
-		if(player != null && sesion != null) {
-			player.setSesion(sesion);
-			playerRepository.save(player);
+	@PostMapping("")
+	public Sesion create(@RequestBody Sesion sesion) {
+		if(sesion != null) {
+			sesionRepository.save(sesion);
 		}
 		return null;
 	}
-	
-	@PutMapping("{id}/sesion/{idSesion}")
-	public Player update(@PathVariable int id, @PathVariable int idSesion, @RequestBody Player newPlayer) {
-		Player player = playerRepository.findById(id).orElse(null);
-		Sesion sesion = sesionRepository.findById(idSesion).orElse(null);
-		if(player != null && newPlayer != null && sesion != null) {
-			player.setUsername(newPlayer.getUsername());
-			player.setSesion(sesion);
-			playerRepository.save(player);
+
+	@PutMapping("{id}")
+	public Sesion update(@PathVariable int id, @RequestBody Sesion newSesion) {
+		Sesion sesion = sesionRepository.findById(id).orElse(null);
+		if(sesion != null && newSesion != null) {
+			sesion.setCoordinator(newSesion.getCoordinator());
+			sesionRepository.save(sesion);
 		}
 		return null;
 	}
-	
+
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("{id}")
 	public boolean deleteById(@PathVariable int id){
-		Player player = playerRepository.findById(id).orElse(null);
-		if(player != null) {
-			playerRepository.deleteById(id);
+		Sesion sesion = sesionRepository.findById(id).orElse(null);
+		if(sesion != null) {
+			sesionRepository.deleteById(id);
 			return true;
 		}
 		return false;

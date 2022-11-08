@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.games.platforms.models;
 
 import javax.persistence.Entity;
@@ -13,53 +16,39 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "player")
-public class Player {
+@Table(name = "sesion_has_game")
+public class SesionHasGame {
 	//Declaracion de variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPlayer;
-	private String username;
-	private int totalScore;
+	private int idSesionHasGame;
+	
 	@OneToOne
 	@JoinColumn(name = "id_sesion")
 	private Sesion sesion;
 	
+	@OneToOne
+	@JoinColumn(name = "id_game")
+	private Game game;
+
 	//Metodo constructor
-	public Player(String username, int totalScore, Sesion sesion) {
+	public SesionHasGame(Sesion sesion, Game game) {
 		super();
-		this.username = username;
-		this.totalScore = totalScore;
 		this.sesion = sesion;
+		this.game = game;
 	}
 	
-	public Player() {
+	public SesionHasGame() {
 		
 	}
 
 	//Get y set
-	public int getIdPlayer() {
-		return idPlayer;
+	public int getIdSesionHasGame() {
+		return idSesionHasGame;
 	}
 
-	public void setIdPlayer(int idPlayer) {
-		this.idPlayer = idPlayer;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public int getTotalScore() {
-		return totalScore;
-	}
-
-	public void setTotalScore(int totalScore) {
-		this.totalScore = totalScore;
+	public void setIdSesionHasGame(int idSesionHasGame) {
+		this.idSesionHasGame = idSesionHasGame;
 	}
 
 	public Sesion getSesion() {
@@ -68,5 +57,13 @@ public class Player {
 
 	public void setSesion(Sesion sesion) {
 		this.sesion = sesion;
+	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
 	}
 }
