@@ -47,7 +47,7 @@ public class PlayerHasGameController {
 	}
 
 	@GetMapping("{id}")
-	public PlayerHasGame findAll(@PathVariable int id){
+	public PlayerHasGame findById(@PathVariable int id){
 		return playerHasGameRepository.findById(id).orElse(null);
 	}
 
