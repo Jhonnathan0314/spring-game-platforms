@@ -59,7 +59,7 @@ public class SesionHasGameController {
 		if(sesionHasGame != null && sesion != null && game != null) {
 			sesionHasGame.setSesion(sesion);
 			sesionHasGame.setGame(game);
-			sesionHasGameRepository.save(sesionHasGame);
+			return sesionHasGameRepository.save(sesionHasGame);
 		}
 		return null;
 	}
@@ -72,7 +72,7 @@ public class SesionHasGameController {
 		if(sesionHasGame != null && newSesionHasGame != null && sesion != null && game != null) {
 			sesionHasGame.setSesion(sesion);
 			sesionHasGame.setGame(game);
-			sesionHasGameRepository.save(sesionHasGame);
+			return sesionHasGameRepository.save(sesionHasGame);
 		}
 		return null;
 	}

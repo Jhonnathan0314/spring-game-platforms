@@ -47,7 +47,7 @@ public class GameController {
 	@PostMapping("")
 	public Game create(@RequestBody Game game) {
 		if(game != null) {
-			gameRepository.save(game);
+			return gameRepository.save(game);
 		}
 		return null;
 	}
@@ -57,7 +57,7 @@ public class GameController {
 		Game game = gameRepository.findById(id).orElse(null);
 		if(game != null && newGame != null) {
 			game.setName(newGame.getName());
-			gameRepository.save(game);
+			return gameRepository.save(game);
 		}
 		return null;
 	}

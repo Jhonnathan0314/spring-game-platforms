@@ -53,7 +53,7 @@ public class PlayerController {
 		Sesion sesion = sesionRepository.findById(idSesion).orElse(null);
 		if(player != null && sesion != null) {
 			player.setSesion(sesion);
-			playerRepository.save(player);
+			return playerRepository.save(player);
 		}
 		return null;
 	}
@@ -65,7 +65,7 @@ public class PlayerController {
 		if(player != null && newPlayer != null && sesion != null) {
 			player.setUsername(newPlayer.getUsername());
 			player.setSesion(sesion);
-			playerRepository.save(player);
+			return playerRepository.save(player);
 		}
 		return null;
 	}

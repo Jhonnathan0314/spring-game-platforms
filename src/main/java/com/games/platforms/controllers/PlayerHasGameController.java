@@ -61,7 +61,7 @@ public class PlayerHasGameController {
 			playerRepository.save(player);
 			playerHasGame.setPlayer(player);
 			playerHasGame.setGame(game);
-			playerHasGameRepository.save(playerHasGame);
+			return playerHasGameRepository.save(playerHasGame);
 		}
 		return null;
 	}
@@ -77,7 +77,7 @@ public class PlayerHasGameController {
 			playerHasGame.setPlayer(player);
 			playerHasGame.setGame(game);
 			playerHasGame.setScore(newPlayerHasGame.getScore());
-			playerHasGameRepository.save(playerHasGame);
+			return playerHasGameRepository.save(playerHasGame);
 		}
 		return null;
 	}

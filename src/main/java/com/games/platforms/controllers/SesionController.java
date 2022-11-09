@@ -47,7 +47,7 @@ public class SesionController {
 	@PostMapping("")
 	public Sesion create(@RequestBody Sesion sesion) {
 		if(sesion != null) {
-			sesionRepository.save(sesion);
+			return sesionRepository.save(sesion);
 		}
 		return null;
 	}
@@ -57,7 +57,7 @@ public class SesionController {
 		Sesion sesion = sesionRepository.findById(id).orElse(null);
 		if(sesion != null && newSesion != null) {
 			sesion.setCoordinator(newSesion.getCoordinator());
-			sesionRepository.save(sesion);
+			return sesionRepository.save(sesion);
 		}
 		return null;
 	}
