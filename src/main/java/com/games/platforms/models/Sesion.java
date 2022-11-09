@@ -18,13 +18,13 @@ import javax.persistence.Table;
 public class Sesion {
 	//Declaracion de variables
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_sesion;
 	private String coordinator;
 	
 	//Metodo constructor
-	public Sesion(int id_sesion, String coordinator) {
+	public Sesion(String coordinator) {
 		super();
-		this.id_sesion = id_sesion;
 		this.coordinator = coordinator;
 	}
 	
