@@ -22,8 +22,9 @@ public class Sesion {
 	private String coordinator;
 	
 	//Metodo constructor
-	public Sesion(String coordinator) {
+	public Sesion(int id_sesion, String coordinator) {
 		super();
+		this.id_sesion = id_sesion;
 		this.coordinator = coordinator;
 	}
 	
